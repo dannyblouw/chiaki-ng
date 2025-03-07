@@ -1,8 +1,6 @@
 
-cmake_minimum_required(VERSION 3.2)
-
+cmake_minimum_required(VERSION 3.22)
 set(CMAKE_CXX_STANDARD 14)
-
 add_library(chiaki-jni SHARED
         src/main/cpp/chiaki-jni.c
         src/main/cpp/log.h

@@ -18,18 +18,22 @@ def chiakiVersion = "$chiakiVersionMajor.$chiakiVersionMinor.$chiakiVersionPatch
 println("Determined Chiaki Version: $chiakiVersion")
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    namespace 'com.metallic.chiaki'
+    compileSdkVersion 35
+    buildToolsVersion "35.0.0"
     defaultConfig {
         applicationId "com.metallic.chiaki"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 35
         versionCode 11
         versionName chiakiVersion
         externalNativeBuild {
             cmake {
                 arguments "-DCHIAKI_ENABLE_TESTS=OFF",
+                        "-DCHIAKI_USE_SYSTEM_NANOPB=OFF",
+                        "-DCHIAKI_ENABLE_SPEEX_DSP=OFF",
                         "-DCHIAKI_ENABLE_CLI=OFF",
+                        "-DCMAKE_POLICY_DEFAULT_CMP0057=NEW",
                         "-DCHIAKI_ENABLE_GUI=OFF",
                         "-DCHIAKI_ENABLE_SETSU=OFF",
                         "-DCHIAKI_ENABLE_ANDROID=ON",
@@ -52,7 +56,7 @@ android {
     }
     externalNativeBuild {
         cmake {
-            version "3.10.2+"
+            version "3.22.1+"
             path rootCMakeLists
         }
     }
